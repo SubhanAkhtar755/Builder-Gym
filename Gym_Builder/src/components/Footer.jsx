@@ -8,9 +8,10 @@ import {
   PhoneOutlined,
 } from '@ant-design/icons';
 import { Input, Button } from 'antd';
-import { collection, addDoc ,db} from '../config/Firebase';
+import { collection, addDoc, db } from '../config/Firebase';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -42,7 +43,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-black via-gray-900 to-cyan-950 text-gray-300 pt-10 px-6 relative">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ amount: 0.3 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="bg-gradient-to-b from-black via-gray-900 to-cyan-950 text-gray-300 pt-10 px-6 relative"
+    >
       <ToastContainer position="bottom-right" autoClose={3000} />
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
@@ -107,7 +114,7 @@ const Footer = () => {
       <div className="text-center text-sm text-gray-500 border-t border-cyan-800 pt-4 mt-10 pb-4">
         © {new Date().getFullYear()} BuilderGym. All rights reserved.
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

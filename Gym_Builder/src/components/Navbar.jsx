@@ -15,6 +15,7 @@ import { auth } from "../config/Firebase";
 import { UserContext } from "../context/UserContext";
 import Logo from "../assets/logob.png";
 import userLogo from "../assets/user.jpg";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -142,7 +143,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 bg-gradient-to-r from-black via-cyan-900 to-black px-4 py-2 shadow-md border-b border-cyan-700 flex items-center justify-between text-white">
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full fixed top-0 left-0 z-50 bg-gradient-to-r from-black via-cyan-900 to-black px-4 py-2 shadow-md border-b border-cyan-700 flex items-center justify-between text-white"
+    >
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Link to="/">
@@ -221,9 +227,8 @@ const Navbar = () => {
           </div>
 
           {/* Menu Items */}
-          <div className="flex-1 px-4 pt-4 bg-gradient-to-r from-black via-gray-900 to-black p-4">
-            {/* Removed bg from menu items */}
-            <Menu mode="vertical" className="  border-none">
+          <div className="flex-1 px-4 pt-4 bg-gradient-to-r  from-black via-gray-900 to-black p-4">
+            <Menu mode="vertical" className="border-none">
               {mobileMenu.props.children}
             </Menu>
           </div>
@@ -234,7 +239,7 @@ const Navbar = () => {
           </div>
         </div>
       </Drawer>
-    </div>
+    </motion.div>
   );
 };
 

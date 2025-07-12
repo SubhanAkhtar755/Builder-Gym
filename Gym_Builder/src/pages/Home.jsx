@@ -1,7 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
 const Home = () => {
-const features = [
+ const features = [
   {
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQNQ-USH5TNlG9sMMcToHCe7bXb1EmY2Wlrw&s",
@@ -40,36 +46,42 @@ const features = [
   },
 ];
 
-  const testimonials = [
-    {
-      name: "Ahsan Raza",
-      quote:
-        "The Builder Gym completely changed my life. I've gained confidence and strength thanks to the amazing trainers!",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      name: "Sara Malik",
-      quote:
-        "Clean, modern, and motivating! I love the group classes and the vibe here. Highly recommended.",
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-    },
-    {
-      name: "Ali Khan",
-      quote:
-        "Affordable and flexible membership plans. Best gym experience I've had in years.",
-      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-    },
-  ];
+const testimonials = [
+  {
+    name: "Ahmed Nawaz",
+    quote:
+      "Builder Gym ne meri fitness journey ka aghaaz kiya. Trainers bohat professional hain aur environment motivating hai.",
+    avatar: "https://randomuser.me/api/portraits/men/44.jpg",
+  },
+  {
+    name: "Fatima Zahra",
+    quote:
+      "Ladies ke liye separate sessions aur clean environment milna mushkil hota hai, lekin yahan sab kuch perfect hai!",
+    avatar: "https://randomuser.me/api/portraits/women/60.jpg",
+  },
+  {
+    name: "Hassan Javed",
+    quote:
+      "Main ne 3 months mein 10kg reduce kiya hai! Diet plan aur training dono top notch hain.",
+    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+  },
+];
+
+
 
   return (
     <div className="text-white font-sans">
       {/* HERO */}
-      <section
+      <motion.section
         className="min-h-screen bg-cover bg-center flex items-center justify-center text-center px-6 relative"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1950&q=80')",
         }}
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{amount: 0.3 }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-transparent z-0"></div>
         <div className="relative z-10 bg-black/60 p-10 rounded-2xl max-w-3xl">
@@ -79,14 +91,22 @@ const features = [
             Join Now
           </button>
         </div>
-      </section>
+      </motion.section>
 
-   {/* FEATURES ZIGZAG */}
+      {/* FEATURES ZIGZAG */}
       <section className="py-24 bg-gray-950 relative z-10">
-        <h2 className="text-4xl font-bold text-center text-cyan-400 mb-20">Why Train With Us</h2>
+        <motion.h2
+          className="text-4xl font-bold text-center text-cyan-400 mb-20"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }}
+        >
+          Why Train With Us
+        </motion.h2>
         <div className="max-w-6xl mx-auto flex flex-col gap-16">
           {features.map((f, i) => (
-            <div
+            <motion.div
               key={i}
               className={`relative grid md:grid-cols-2 items-center gap-6 px-4 py-6 rounded-2xl overflow-hidden shadow-lg border border-cyan-600 ${
                 i % 2 === 0 ? "" : "md:flex-row-reverse"
@@ -96,6 +116,10 @@ const features = [
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3 }}
             >
               <div className="absolute inset-0 bg-black/60"></div>
               <div className="z-10 md:px-10 text-center md:text-left text-white">
@@ -109,14 +133,19 @@ const features = [
                   alt={f.title}
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-
       {/* STATS SECTION */}
-      <section className="py-20 bg-gradient-to-r from-cyan-800 via-black to-cyan-900 text-center">
+      <motion.section
+        className="py-20 bg-gradient-to-r from-cyan-800 via-black to-cyan-900 text-center"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+      >
         <h2 className="text-4xl font-bold text-cyan-300 mb-10">Gym by the Numbers</h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {[
@@ -125,41 +154,68 @@ const features = [
             ["1000+", "Transformations"],
             ["24/7", "Open Every Day"],
           ].map(([stat, label], i) => (
-            <div key={i} className="bg-black/40 p-6 rounded-xl border border-cyan-600">
+            <motion.div
+              key={i}
+              className="bg-black/40 p-6 rounded-xl border border-cyan-600"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3 }}
+            >
               <h3 className="text-5xl font-extrabold text-white">{stat}</h3>
               <p className="text-gray-300 mt-2">{label}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* PROGRAMS SECTION */}
-      <section className="py-24 px-6 bg-gray-950 text-center">
+      <motion.section
+        className="py-24 px-6 bg-gray-950 text-center"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+      >
         <h2 className="text-4xl font-bold text-cyan-400 mb-6">Our Programs</h2>
         <p className="text-gray-400 mb-12 max-w-3xl mx-auto">
           Whether you're training for strength, endurance, or overall fitness, our specialized programs are tailored to help you reach your goals with expert guidance.
         </p>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {["Strength Training", "HIIT & Cardio", "Weight Loss Program", "CrossFit", "Bodybuilding", "Personal Training"].map((program, i) => (
-            <div
+            <motion.div
               key={i}
               className="bg-white/5 p-6 rounded-xl border border-cyan-600 hover:scale-105 transition"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3 }}
             >
               <h3 className="text-xl font-semibold text-cyan-300 mb-2">{program}</h3>
               <p className="text-gray-400 text-sm">Customized sessions, guided by professionals, with trackable progress.</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* TESTIMONIALS */}
-      <section className="py-24 bg-gradient-to-br from-black via-cyan-950/40 to-black text-center">
+      <motion.section
+        className="py-24 bg-gradient-to-br from-black via-cyan-950/40 to-black text-center"
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
+      >
         <h2 className="text-4xl font-bold text-cyan-400 mb-12">What Our Members Say</h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {testimonials.map((t, i) => (
-            <div
+            <motion.div
               key={i}
               className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-cyan-500 shadow-xl"
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.3 }}
             >
               <img
                 src={t.avatar}
@@ -168,18 +224,22 @@ const features = [
               />
               <p className="text-gray-300 italic mb-2">“{t.quote}”</p>
               <h4 className="text-cyan-300 font-semibold">{t.name}</h4>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* LOCATION & HOURS */}
-      <section
+      <motion.section
         className="py-24 px-6 bg-cover bg-center text-center"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1950&q=80')",
         }}
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.3 }}
       >
         <div className="bg-black/70 p-10 rounded-xl max-w-4xl mx-auto shadow-2xl">
           <h2 className="text-4xl font-bold text-cyan-400 mb-4">Visit Our Location</h2>
@@ -204,7 +264,7 @@ const features = [
             <li>Sunday: 6:00 AM – 4:00 PM</li>
           </ul>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
