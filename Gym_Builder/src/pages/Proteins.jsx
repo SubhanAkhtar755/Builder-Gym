@@ -62,7 +62,7 @@ const Proteins = () => {
       </section>
 
       {/* Product Cards */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section className=" px-6 max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-cyan-400 mb-16">Our Top Products</h2>
         <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {proteinData.map((item, idx) => (
@@ -75,7 +75,7 @@ const Proteins = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-green-400">{item.price}</span>
                   <a
-                    href={`https://wa.me/923001234567?text=${encodeURIComponent(`Hi, I'm interested in buying ${item.name} for ${item.price}.\n\nDetails:\n${item.description}\n${item.benefits}`)}`}
+                    href={`https://wa.me/923064400814?text=${encodeURIComponent(`Hi, I'm interested in buying ${item.name} for ${item.price}.\n\nDetails:\n${item.description}\n${item.benefits}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg font-medium"

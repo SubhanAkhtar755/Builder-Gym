@@ -17,7 +17,10 @@ import {
   getDoc,
   collection,
   addDoc,
-  updateDoc
+  updateDoc,
+  getDocs,
+  query,
+  where
 } from "firebase/firestore";
 import {
   getDatabase,
@@ -93,5 +96,8 @@ export {
   deleteObject,
   uploadBytes,
   updateDoc,
-  updatePassword
+  updatePassword,
+  getDocs,
+  query,
+  where
 };

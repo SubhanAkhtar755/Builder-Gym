@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/Firebase";
 import { UserContext } from "../context/UserContext";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logob.png";
 import userLogo from "../assets/user.jpg";
 
 const Navbar = () => {
@@ -41,7 +41,9 @@ const Navbar = () => {
     {
       key: "1",
       icon: <UserOutlined />,
-      label: <span onClick={() => navigate("/dashboard/profile")}>Profile</span>,
+      label: (
+        <span onClick={() => navigate("/dashboard/profile")}>Profile</span>
+      ),
     },
     {
       key: "2",
@@ -51,12 +53,18 @@ const Navbar = () => {
     {
       key: "3",
       icon: <FireOutlined />,
-      label: <span onClick={() => navigate("/dashboard/progress")}>Progress</span>,
+      label: (
+        <span onClick={() => navigate("/dashboard/progress")}>Progress</span>
+      ),
     },
     {
       key: "4",
       icon: <FireOutlined />,
-      label: <span onClick={() => navigate("/dashboard/subscription")}>Subscription</span>,
+      label: (
+        <span onClick={() => navigate("/dashboard/subscription")}>
+          Attendance
+        </span>
+      ),
     },
     user?.email === "muhammadsubhan192128@gmail.com" && {
       key: "5",
@@ -72,28 +80,49 @@ const Navbar = () => {
 
   const mobileMenu = (
     <Menu mode="vertical" className="w-full bg-black text-white">
-      <Menu.Item icon={<HomeOutlined />} onClick={() => closeDrawerAndNavigate("/")}>
+      <Menu.Item
+        icon={<HomeOutlined />}
+        onClick={() => closeDrawerAndNavigate("/")}
+      >
         Home
       </Menu.Item>
-      <Menu.Item icon={<InfoCircleOutlined />} onClick={() => closeDrawerAndNavigate("/proteins")}>
+      <Menu.Item
+        icon={<InfoCircleOutlined />}
+        onClick={() => closeDrawerAndNavigate("/proteins")}
+      >
         Proteins
       </Menu.Item>
       {user ? (
         <>
-          <Menu.Item icon={<UserOutlined />} onClick={() => closeDrawerAndNavigate("/dashboard/profile")}>
+          <Menu.Item
+            icon={<UserOutlined />}
+            onClick={() => closeDrawerAndNavigate("/dashboard/profile")}
+          >
             Profile
           </Menu.Item>
-          <Menu.Item icon={<FireOutlined />} onClick={() => closeDrawerAndNavigate("/dashboard/diet")}>
+          <Menu.Item
+            icon={<FireOutlined />}
+            onClick={() => closeDrawerAndNavigate("/dashboard/diet")}
+          >
             Diet
           </Menu.Item>
-          <Menu.Item icon={<FireOutlined />} onClick={() => closeDrawerAndNavigate("/dashboard/progress")}>
+          <Menu.Item
+            icon={<FireOutlined />}
+            onClick={() => closeDrawerAndNavigate("/dashboard/progress")}
+          >
             Progress
           </Menu.Item>
-          <Menu.Item icon={<FireOutlined />} onClick={() => closeDrawerAndNavigate("/dashboard/subscription")}>
-            Subscription
+          <Menu.Item
+            icon={<FireOutlined />}
+            onClick={() => closeDrawerAndNavigate("/dashboard/subscription")}
+          >
+            Attendance{" "}
           </Menu.Item>
           {user.email === "muhammadsubhan192128@gmail.com" && (
-            <Menu.Item icon={<FireOutlined />} onClick={() => closeDrawerAndNavigate("/dashboard/admin")}>
+            <Menu.Item
+              icon={<FireOutlined />}
+              onClick={() => closeDrawerAndNavigate("/dashboard/admin")}
+            >
               Admin
             </Menu.Item>
           )}
@@ -102,7 +131,10 @@ const Navbar = () => {
           </Menu.Item>
         </>
       ) : (
-        <Menu.Item icon={<LoginOutlined />} onClick={() => closeDrawerAndNavigate("/login")}>
+        <Menu.Item
+          icon={<LoginOutlined />}
+          onClick={() => closeDrawerAndNavigate("/login")}
+        >
           Login
         </Menu.Item>
       )}
@@ -116,15 +148,22 @@ const Navbar = () => {
         <Link to="/">
           <img src={Logo} alt="Gym Logo" className="w-10 h-10 object-contain" />
         </Link>
-        <Link to="/" className="text-xl font-bold text-white hover:text-cyan-400 transition">
+        <Link
+          to="/"
+          className="text-xl font-bold text-white hover:text-cyan-400 transition"
+        >
           BuilderGym
         </Link>
       </div>
 
       {/* Desktop Navbar */}
       <div className="hidden md:flex gap-6 items-center">
-        <Link to="/" className="hover:text-cyan-400 transition">Home</Link>
-        <Link to="/proteins" className="hover:text-cyan-400 transition">Proteins</Link>
+        <Link to="/" className="hover:text-cyan-400 transition">
+          Home
+        </Link>
+        <Link to="/proteins" className="hover:text-cyan-400 transition">
+          Proteins
+        </Link>
         {user ? (
           <Dropdown menu={{ items: userMenuItems }} placement="bottomRight">
             <img
@@ -157,44 +196,44 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Drawer Menu */}
-   <Drawer
-  title={null}
-  placement="right"
-  onClose={() => setVisible(false)}
-  open={visible}
-  width={280}
-  headerStyle={{ display: "none" }}
-  bodyStyle={{
-    background: "linear-gradient(to bottom, #0f172a, #0e7490)",
-    color: "white",
-    padding: 0,
-  }}
->
-  <div className="text-white h-full flex flex-col justify-between">
-    {/* Top Logo + Name */}
-    <div className="bg-gradient-to-r from-black via-gray-900 to-black p-4 border-b border-cyan-700">
-      <div className="flex items-center gap-3 px-2">
-        <img src={Logo} alt="Logo" className="w-10 h-10 object-contain" />
-        <h2 className="text-xl font-semibold text-cyan-400">BuilderGym</h2>
-      </div>
-    </div>
+      <Drawer
+        title={null}
+        placement="right"
+        onClose={() => setVisible(false)}
+        open={visible}
+        width={280}
+        headerStyle={{ display: "none" }}
+        bodyStyle={{
+          background: "linear-gradient(to bottom, #0f172a, #0e7490)",
+          color: "white",
+          padding: 0,
+        }}
+      >
+        <div className="text-white h-full flex flex-col justify-between">
+          {/* Top Logo + Name */}
+          <div className="bg-gradient-to-r from-black via-gray-900 to-black p-4 border-b border-cyan-700">
+            <div className="flex items-center gap-3 px-2">
+              <img src={Logo} alt="Logo" className="w-10 h-10 object-contain" />
+              <h2 className="text-xl font-semibold text-cyan-400">
+                BuilderGym
+              </h2>
+            </div>
+          </div>
 
-    {/* Menu Items */}
-    <div className="flex-1 px-4 pt-4 bg-gradient-to-r from-black via-gray-900 to-black p-4">
-      {/* Removed bg from menu items */}
-      <Menu mode="vertical" className="  border-none">
-        {mobileMenu.props.children}
-      </Menu>
-    </div>
+          {/* Menu Items */}
+          <div className="flex-1 px-4 pt-4 bg-gradient-to-r from-black via-gray-900 to-black p-4">
+            {/* Removed bg from menu items */}
+            <Menu mode="vertical" className="  border-none">
+              {mobileMenu.props.children}
+            </Menu>
+          </div>
 
-    {/* Footer */}
-    <div className="text-center text-sm text-cyan-200 py-4 border-t border-cyan-700">
-      © {new Date().getFullYear()} BuilderGym
-    </div>
-  </div>
-</Drawer>
-
-
+          {/* Footer */}
+          <div className="text-center text-sm text-cyan-200 py-4 border-t border-cyan-700">
+            © {new Date().getFullYear()} BuilderGym
+          </div>
+        </div>
+      </Drawer>
     </div>
   );
 };

@@ -7,18 +7,31 @@ import {
   EnvironmentOutlined,
   PhoneOutlined,
 } from '@ant-design/icons';
-import { Input, Button, message } from 'antd';
+import { Input, Button } from 'antd';
+import { collection, addDoc ,db} from '../config/Firebase';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!email || !email.includes('@')) {
-      message.error('Please enter a valid email address');
+      toast.error('Please enter a valid email address');
       return;
     }
-    message.success('Subscribed successfully!');
-    setEmail('');
+
+    try {
+      await addDoc(collection(db, 'newsletter'), {
+        email: email.trim(),
+        subscribedAt: new Date().toISOString(),
+      });
+      toast.success('Subscribed successfully!');
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+      toast.error('Something went wrong, try again.');
+    }
   };
 
   const imageUrls = [
@@ -30,6 +43,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-b from-black via-gray-900 to-cyan-950 text-gray-300 pt-10 px-6 relative">
+      <ToastContainer position="bottom-right" autoClose={3000} />
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
         {/* Branding + Contact */}
@@ -40,8 +54,8 @@ const Footer = () => {
           </p>
 
           <div className="mt-4 text-sm space-y-2 text-gray-400">
-            <p className="flex items-center gap-2"><EnvironmentOutlined /> Main Street, Sector 5, Lahore</p>
-            <p className="flex items-center gap-2"><PhoneOutlined /> +92 312 1234567</p>
+            <p className="flex items-center gap-2"><EnvironmentOutlined />Hasilpur opposites wapda grid station, 63000, Pakistan</p>
+            <p className="flex items-center gap-2"><PhoneOutlined />03064400814</p>
             <p className="flex items-center gap-2"><MailOutlined /> contact@buildergym.com</p>
           </div>
         </div>
